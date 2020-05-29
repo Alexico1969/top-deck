@@ -1,0 +1,605 @@
+/*
+Theme Name: Gokkasten archief
+Author: Rein Aris
+*/
+
+@charset "utf-8";
+/* CSS Document */
+BODY {
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #fff;
+	line-height: 19px;
+	background:url(images/bg-body.png);
+}
+a {
+	color:#F89406;	
+}
+a:hover {
+	color: #000;	
+}
+.home #sidebar a:hover {
+	color: #fff;	
+}
+.home #sidebar a.btn:hover {
+	color: #000;	
+}
+/************************************************/
+/* WP core
+/************************************************/
+.alignnone {
+    margin: 10px 10px 10px 0;
+}
+.aligncenter, div.aligncenter {
+    display:block;
+    margin: 10px auto 10px auto;
+}
+.alignright {
+    float:right;
+    margin: 10px 0 10px 10px;
+}
+.alignleft {
+    float:left;
+    margin: 10px 10px 10px 0;
+}
+.aligncenter {
+    display: block;
+    margin: 10px auto 10px auto;
+}
+a img.alignright {
+    float:right;
+    margin: 10px 0 10px 10px;
+}
+a img.alignnone {
+    margin: 10px 10px 10px 0;
+}
+a img.alignleft {
+    float:left;
+    margin: 10px 10px 10px 0;
+}
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 10px 3px 10px;
+    text-align: center;
+}
+.wp-caption.alignnone {
+    margin: 10px 10px 10px 0;
+}
+.wp-caption.alignleft {
+    margin: 10px 10px 10px 0;
+}
+.wp-caption.alignright {
+    margin: 10px 0 10px 10px;
+}
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin:0;
+    max-width: 98.5%;
+    padding:0;
+    width: auto;
+}
+.wp-caption p.wp-caption-text {
+    font-size:11px;
+    line-height:17px;
+    margin:0;
+    padding:0 4px 5px;
+}
+/************************************************/
+/* Misc
+/************************************************/
+.outerwrap {
+	background: url(images/bg-body.jpg) no-repeat center top;
+}
+#outer {
+	width: 1000px;
+	margin: 0 auto;
+	padding-bottom: 50px;
+}
+#sfw-respond {
+	margin-top: 0;	
+}
+#sfw-respond form {
+	margin: 0;
+}
+#sfw-respond form p {
+	margin: 0 0 9px;
+}
+#sfw-respond form p.sfw-form-submit {
+	margin-bottom:0;	
+}
+#single .comments.well h3 {
+	margin-bottom: 5px;	
+}
+.sfw-commentlist {
+	margin-bottom: 20px;	
+}
+.sfw-comment-author a {
+	color: #666;	
+}
+.sfw-fn {
+	font-weight:bold;
+	color: #000;	
+}
+h2#sfw-comments-title {
+	font-size:22px;
+	margin: 0 0 10px 0;
+	color: #000;
+	font-family: 'Crete Round', serif;
+	line-height: 22px;
+	text-shadow: 0 0 3px #fff;	
+}
+.breadcrumbs a {
+	color: #000;	
+}
+.well .breadcrumbs {
+	margin-bottom: 13px;
+	color: #666;
+}
+.well .breadcrumbs a {
+	color: #3A87AD;	
+}
+/************************************************/
+/* Header
+/************************************************/
+#header {
+	height: 35px;
+	margin: 0 0 20px 0;
+	padding-top:150px;
+	position: relative;
+}
+#header h1.logo,
+#header div.logo
+{
+	background:url(images/gokkasten-archief.png) no-repeat left top;
+	width:200px;
+	height: 126px;
+	display: inline-block;
+	text-indent: -9999px;
+	position:absolute;
+	top: 10px;
+	left: 10px;
+}
+#header div.logo a {
+	width:200px;
+	height: 126px;
+	display: block;	
+}
+#header .navbar {
+
+}
+#header .navbar-inner {
+	
+
+}
+#header .navbar input {
+	margin-bottom: 0;	
+}
+.navbar-search .search-query:-moz-placeholder {
+	color: #999;	
+}
+.navbar-search .btn {
+	margin: 0;	
+}
+#header .navbar .caret {
+	opacity:1;
+	margin-left: 4px;	
+}
+/************************************************/
+/* homepage
+/************************************************/
+.homepage.news h2 {
+	font-size: 18px;
+	line-height: 22px;
+	margin-bottom: 15px;	
+	font-family: 'Crete Round', serif;
+}
+.homepage.news h2 a {
+	color: #000;	
+}
+.homepage.news .thumb {
+	padding: 1px;
+	float:right;
+	margin: 9px 0 5px 10px;
+	border: 1px solid #999;	
+}
+
+.homepage.news .items {
+
+}
+.homepage.news .items h4 {
+	margin-bottom: 10px;
+	color: #BAA26A;	
+}
+.homepage.news .item {
+	border-bottom: 1px dashed #ccc;
+	margin-bottom: 8px;	
+}
+.homepage.news .item h3 {
+	font-size: 13px;
+	line-height: 16px;
+	margin-bottom: 0;	
+}
+.homepage.news .item h3 a {
+	color: #444;	
+}
+.homepage.news .items .readmore a {
+	color: #000;
+	text-decoration:underline;
+}
+/************************************************/
+/* sidebar
+/************************************************/
+.column2 #sidebar {
+	width: 20%;
+	float: left;
+	margin: 0 2% 0 0;
+}
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;	
+}
+#sidebar ul li {
+	margin: 0;
+	padding: 0;	
+}
+#sidebar .taxonomy-drilldown-lists h4 {
+	border-bottom: 1px solid #CCC;	
+	font-family: 'Crete Round', serif;
+	margin-bottom: 5px;
+	padding-bottom:3px;
+	font-size:16px;
+	color:#fff;
+}
+.well #sidebar .taxonomy-drilldown-lists h4 {
+	color: #444;	
+}
+#sidebar .taxonomy-drilldown-lists h4 .delete {
+	background: url(images/trash.png) no-repeat left top;
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+	float: right;
+	margin: 3px 0 0 0;
+}
+#sidebar .taxonomy-drilldown-lists .group {
+	margin-bottom: 10px;	
+}
+#sidebar ul li.term-item a {
+	display: block;
+	padding: 2px 0 2px 20px;
+	text-decoration: none;
+	color:#f86900;
+}
+#sidebar ul li.term-item a.add-term {
+	background: url(images/unchecked.png) no-repeat left center;
+}
+#sidebar ul li.term-item a.remove-term  {
+	background: url(images/checked.png) no-repeat left center;	
+}
+/************************************************/
+/* content
+/************************************************/
+#content,.content.well {
+	min-height: 300px;
+}
+.single-gokkasten .content.well {
+	min-height:0;	
+}
+.column2 #content {
+	width: 78%;
+	float: left;	
+}
+h1.pagetitle {
+	font-size:22px;
+	margin: 25px 0 10px 20px;
+	color: #fff;
+	font-family: 'Crete Round', serif;
+	line-height: 22px;
+	text-shadow: 0 0 3px #000;
+}
+h2.pagetitle {
+	font-size:22px;
+	margin: 0 0 20px 0;
+	color: #F89406;
+	font-family: 'Crete Round', serif;
+	line-height: 22px;
+}
+.archivelist {
+	padding: 0 19px;	
+}
+/************************************************/
+/* itemlist
+/************************************************/
+.itemlist {
+	
+}
+.itemlist .item {
+	width: 23.5%;
+	float: left;
+	margin: 0 2% 2% 0;
+}
+.itemlist .item .inner {
+	padding: 7px 10px 10px 10px;
+	background-color: #eeeadf;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    min-height: 20px;
+}
+.itemlist .item.last {
+	margin-right: 0;	
+}
+.itemlist .item h3 {
+	font-size: 13px;
+	line-height: 16px;
+	margin-bottom:3px;
+}
+.itemlist .item h3 a {
+	color: #c10000;
+}
+/************************************************/
+/* Single
+/************************************************/
+#single .mainphoto {
+	width: 316px;
+	height: 440px;
+	background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+	overflow: hidden;
+}
+#single .well h3 {
+	font-size: 20px;
+	margin: 0 0 10px 0;
+	color: #666;
+	font-family: 'Crete Round', serif;
+	line-height: 18px;		
+}
+#single .well p:last-child {
+	margin-bottom: 0;	
+}
+#single .well.specs table {
+	margin-bottom: 0;	
+}
+
+#single .photos .photo {
+	float: left;
+	width: 23.5%;
+	margin-right: 2%;
+	margin-bottom:18px;	
+}
+#single .photos .photo.last {
+	margin-right:0;
+}
+
+#single ol.commentlist {
+	margin: 0;
+	list-style: none;
+	clear:both;
+}
+#single ol.commentlist .reply {
+	font-size: 10px;
+	text-align: right;
+	line-height:10px;
+}
+#single ol.commentlist .reply a {
+	color: #666;	
+}
+#single ol.commentlist .avatar {
+	display: none;	
+}
+#single ol.commentlist .fn {
+	font-weight: bold;	
+}
+#single ol.commentlist .commentmetadata {
+	font-size: 10px;
+	text-transform:uppercase;
+}
+#single ol.commentlist li {
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+#single ol.commentlist li .comment-body {
+	margin-bottom: 10px;	
+}
+#single ol.commentlist li ul.children {
+	list-style: none;	
+	margin-bottom: 15px;
+	margin-left: 10px;
+}
+#single ol.commentlist li ul.children li {
+	padding: 0 0 0 10px;
+	border-left: 5px solid #ccc;
+	border-bottom: 0;
+}
+#single #respond {
+	margin: 0;
+	clear: both;
+}
+#single #respond form {
+	margin-bottom:0;	
+}
+#single #respond h3 {
+	margin: 0 0 10px 0;
+	color: #000;
+	font-weight: normal;
+	font-size: 16px;	
+}
+#single #respond textarea {
+	width: 97%;	
+}
+#single #respond #cancel-comment-reply {
+	font-size: 10px;
+	margin: 0 0 5px 0;	
+}
+#single #respond #cancel-comment-reply a {
+	color: #666;		
+}
+#single .well.photos {
+	padding-bottom:0;	
+}
+/************************************************/
+/* news archive
+/************************************************/
+.news-archive {
+	
+}
+.news-archive .item {
+	margin-bottom: 10px;
+}
+.news-archive .item h3 {
+	margin-bottom: 5px;	
+}
+.news-archive .item .thumb {
+	padding: 1px;
+	float:left;
+	margin: 0 13px 10px 0;
+	border: 1px solid #999;	
+}
+/************************************************/
+/* Community
+/************************************************/
+.community-overview {
+	
+}
+.community-overview .item {
+	margin-bottom: 20px;
+}
+.community-overview .item h3 {
+	margin-bottom: 5px;	
+}
+.community-overview .item .thumb {
+	padding: 1px;
+	float:left;
+	margin: 0 13px 10px 0;
+	border: 1px solid #999;	
+}
+.community-overview .main a {
+	font-weight:bold;
+	color: #000;	
+}
+.community-overview .current-cat a {
+	font-weight:bold;
+	color: #C10000;	
+}
+.community-overview .item p {
+	margin: 0;	
+}
+.community-overview .item p.comments a {
+	color: #C10000;	
+}
+
+.single-community {
+	
+}
+.single-community .photo {
+	padding: 1px;
+	float:right;
+	margin: 5px 0 15px 15px;
+	border: 1px solid #999;	
+}
+.single-community .sfw-comment-form-comment textarea {
+	width: 99%;
+	height: 100px;
+}
+/************************************************/
+/* Footer
+/************************************************/
+#footer {
+	padding: 30px 0 60px 0;
+	background: url(images/bg-footer.png) left top;
+}
+#footer a {
+	color: #fff;		
+}
+#footer .inner {
+	width:1000px;
+	margin: 0 auto;
+	color: #ccc;	
+}
+#footer .title {
+	font-family: 'Crete Round', serif;
+	font-size: 23px;
+	color: #fff;
+	margin: 0 0 10px 0;	
+	border-bottom: 1px solid #666;
+	padding-bottom: 10px;
+}
+#footer .title2 {
+	font-family: 'Crete Round', serif;
+	font-size: 18px;
+	color: #fff;
+	margin: 20px 0 10px 0;	
+}
+#footer ul.pages {
+	margin: 0;
+	list-style: none;	
+}
+#footer ul.pages li a {
+	text-decoration: underline;	
+}
+#footer .newslist .item {
+	margin: 0 0 10px 0;
+	line-height: 16px;
+	color: #999;
+}
+#footer .newslist .item h5 {
+
+}
+#footer .newslist .item h5 a {
+	
+}
+#footer .nieuwsbrief {
+	margin-bottom:20px;
+}
+#footer .nieuwsbrief input[type="text"]{
+	margin-bottom:0;	
+}
+#footer .door {
+	color: #FAA732;	
+}
+
+.nosearchresults #s {
+	margin-bottom:0;
+}
+
+.single-post .thumb {
+	float: right;
+	margin: 0 0 20px 20px;	
+}
+
+.archivelist .show-all {
+	font-size:22px;
+	margin: 25px 0 10px 20px;
+	color: #fff;
+	font-family: 'Crete Round', serif;
+	line-height: 22px;
+	text-shadow: 0 0 3px #000;
+	text-align:center;
+}
+.archivelist .show-all a {
+	color: #fff;
+	text-decoration:underline;	
+}
+.navigation {
+	text-align:center;	
+}
+.pagination-top ol {
+	margin-bottom: 20px;	
+}
+.pagination-bottom ol {
+	margin-top: 7px;	
+}
