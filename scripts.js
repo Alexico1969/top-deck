@@ -83,12 +83,6 @@ var credits = 100;
 var credits_display = $('.credits');
 credits_display.text(credits);
 
-
-var winline1="";
-var winline2="";
-var winline3="";
-
-
 nrOfSymbols = reel1.length;
 
 var canPlay = true;
@@ -143,8 +137,8 @@ function showSymbols(r){
     var rnd_2 = (rnd_1 + 1) % nrOfSymbols;
     var rnd_3 = (rnd_1 + 2) % nrOfSymbols;
     var symbol_top = "<img class='symbol top_s' src='" + imgDir + "/" + reel1[rnd_1] + "'>";
-    var symbol_mid = "<img id='" + id_str + "'class='symbol mid_s' src='" + imgDir + reel1[rnd_2] + "'>";
-    var symbol_low = "<img class='symbol low_s' src='" + imgDir + "/" + reel1[rnd_3] + "'>";
+    var symbol_mid = "<img id='" + id_str + "'class='symbol mid_s' src='" + imgDir + reel2[rnd_2] + "'>";
+    var symbol_low = "<img class='symbol low_s' src='" + imgDir + "/" + reel3[rnd_3] + "'>";
 
     reel.append(symbol_top);
     reel.append(symbol_mid);
@@ -152,12 +146,13 @@ function showSymbols(r){
 
     if(r == 3){
         symb1 = $('#symb_1').attr('src');
-        symb1 = symb1.substring(4,9);
+        symb_1 = symb1.substring(4,9);
         symb2 = $('#symb_2').attr('src');
-        symb2 = symb2.substring(4,9);
+        symb_2 = symb2.substring(4,9);
         symb3 = $('#symb_3').attr('src');
-        symb3 = symb3.substring(4,9);
-        checkWin(symb1,symb2,symb3);
+        symb_3 = symb3.substring(4,9);
+        checkWin(symb_1,symb_2,symb_3);
+        checkFeature(symb1,symb2,symb3);
         canPlay = true;
     }
 }
@@ -166,6 +161,9 @@ function checkWin(s1,s2,s3){
     if(s1 != s2){
         return;
     }
+
+    $("#snd_prize").get(0).play();
+
     console.log("You've WON someting !");
 
     var same;
@@ -208,4 +206,24 @@ function determineValue(symbol, same){
         if(symbol = "s_jac"){return 200;}   
     }
 
+}
+
+function checkFeature(s1,s2,s3){
+    var totalFeatures = 0;
+    if(s1.includes("_f")){
+        totalFeatures +=1;
+        $("#snd_ft1").get(0).play();
+    }
+    setTimeout(function(){
+        if(s2.includes("_f")){
+            totalFeatures +=1;
+            $("#snd_ft2").get(0).play();
+        }
+    },300); 
+    setTimeout(function(){
+        if(s3.includes("_f")){
+            totalFeatures +=1;
+            $("#snd_ft3").get(0).play();
+        }
+    },600);
 }
