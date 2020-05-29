@@ -127,30 +127,85 @@ function showSpinning(reel){
 
 function showSymbols(r){
     var winAmount = 0;
-    var winSymbol = [];
     if (r == 1){
         var reel = reel_1;
     } else if(r == 2){
         var reel = reel_2;
     } else {
         var reel = reel_3;
-        var one = 
-
-        
-        canPlay = true;
-
     }
 
     $("#snd_stop").get(0).play();
     reel.empty();
+
+    var id_str = "symb_" + r;
     var rnd_1 = Math.floor(Math.random()*nrOfSymbols);
     var rnd_2 = (rnd_1 + 1) % nrOfSymbols;
     var rnd_3 = (rnd_1 + 2) % nrOfSymbols;
     var symbol_top = "<img class='symbol top_s' src='" + imgDir + "/" + reel1[rnd_1] + "'>";
-    var symbol_mid = "<img class='symbol mid_s' src='" + imgDir + "/" + reel1[rnd_2] + "'>";
+    var symbol_mid = "<img id='" + id_str + "'class='symbol mid_s' src='" + imgDir + reel1[rnd_2] + "'>";
     var symbol_low = "<img class='symbol low_s' src='" + imgDir + "/" + reel1[rnd_3] + "'>";
 
     reel.append(symbol_top);
     reel.append(symbol_mid);
     reel.append(symbol_low);
+
+    if(r == 3){
+        symb1 = $('#symb_1').attr('src');
+        symb1 = symb1.substring(4,9);
+        symb2 = $('#symb_2').attr('src');
+        symb2 = symb2.substring(4,9);
+        symb3 = $('#symb_3').attr('src');
+        symb3 = symb3.substring(4,9);
+        checkWin(symb1,symb2,symb3);
+        canPlay = true;
+    }
+}
+
+function checkWin(s1,s2,s3){
+    if(s1 != s2){
+        return;
+    }
+    console.log("You've WON someting !");
+
+    var same;
+
+    if(s2 == s3){
+        same = 3;
+    } else {
+        same = 2;
+    }
+
+    var prize = determineValue(s1,same);
+
+    credits += prize;
+    credits_display.text(credits);
+
+}
+
+function determineValue(symbol, same){
+    if(same == 2){
+        if(symbol = "s_ker"){return 2;}
+        if(symbol = "s_lem"){return 2;}
+        if(symbol = "s_ora"){return 2;}
+        if(symbol = "s_app"){return 2;}
+        if(symbol = "s_pru"){return 2;}
+        if(symbol = "s_dru"){return 2;}
+        if(symbol = "s_bel"){return 4;}
+        if(symbol = "s_pea"){return 4;}
+        if(symbol = "s_bar"){return 4;}
+        if(symbol = "s_jac"){return 4;}        
+    } else {
+        if(symbol = "s_ker"){return 8;}
+        if(symbol = "s_lem"){return 10;}
+        if(symbol = "s_ora"){return 8;}
+        if(symbol = "s_app"){return 10;}
+        if(symbol = "s_pru"){return 16;}
+        if(symbol = "s_dru"){return 20;}
+        if(symbol = "s_bel"){return 40;}
+        if(symbol = "s_pea"){return 100;}
+        if(symbol = "s_bar"){return 150;}
+        if(symbol = "s_jac"){return 200;}   
+    }
+
 }
