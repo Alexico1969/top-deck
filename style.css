@@ -26,6 +26,26 @@ body{
 
 }
 
+.feature{
+    position: absolute;
+    width: 40px;
+    height: auto;
+    top: 505px;
+}
+
+.f1{
+    right: 510px;
+}
+
+.f2{
+    right: 460px;
+}
+
+.f3{
+    right: 410px;
+}
+
+
 .start-btn{
     width: 70px;
     height: 38px;

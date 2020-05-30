@@ -101,6 +101,11 @@ $(".start-btn").click(function(){
 
 function go(){
     canPlay = false;
+
+    $(".f1").hide();
+    $(".f2").hide();
+    $(".f3").hide();
+    
     $("#snd_start").get(0).play();
     setTimeout(function(){showSpinning(reel_1)},10);
     var wait = Math.floor(Math.random()*800) + 2000;
@@ -136,9 +141,22 @@ function showSymbols(r){
     var rnd_1 = Math.floor(Math.random()*nrOfSymbols);
     var rnd_2 = (rnd_1 + 1) % nrOfSymbols;
     var rnd_3 = (rnd_1 + 2) % nrOfSymbols;
-    var symbol_top = "<img class='symbol top_s' src='" + imgDir + "/" + reel1[rnd_1] + "'>";
-    var symbol_mid = "<img id='" + id_str + "'class='symbol mid_s' src='" + imgDir + reel2[rnd_2] + "'>";
-    var symbol_low = "<img class='symbol low_s' src='" + imgDir + "/" + reel3[rnd_3] + "'>";
+
+    if(r == 1){
+        var symbol_top = "<img class='symbol top_s' src='" + imgDir + "/" + reel1[rnd_1] + "'>";
+        var symbol_mid = "<img id='" + id_str + "'class='symbol mid_s' src='" + imgDir + reel1[rnd_2] + "'>";
+        var symbol_low = "<img class='symbol low_s' src='" + imgDir + "/" + reel1[rnd_3] + "'>";
+    } else if(r == 2){
+        var symbol_top = "<img class='symbol top_s' src='" + imgDir + "/" + reel2[rnd_1] + "'>";
+        var symbol_mid = "<img id='" + id_str + "'class='symbol mid_s' src='" + imgDir + reel2[rnd_2] + "'>";
+        var symbol_low = "<img class='symbol low_s' src='" + imgDir + "/" + reel2[rnd_3] + "'>";
+    } else if(r == 3){
+        var symbol_top = "<img class='symbol top_s' src='" + imgDir + "/" + reel3[rnd_1] + "'>";
+        var symbol_mid = "<img id='" + id_str + "'class='symbol mid_s' src='" + imgDir + reel3[rnd_2] + "'>";
+        var symbol_low = "<img class='symbol low_s' src='" + imgDir + "/" + reel3[rnd_3] + "'>";
+    }
+
+   
 
     reel.append(symbol_top);
     reel.append(symbol_mid);
@@ -163,9 +181,6 @@ function checkWin(s1,s2,s3){
     }
 
     $("#snd_prize").get(0).play();
-
-    console.log("You've WON someting !");
-
     var same;
 
     if(s2 == s3){
@@ -211,17 +226,20 @@ function determineValue(symbol, same){
 function checkFeature(s1,s2,s3){
     var totalFeatures = 0;
     if(s1.includes("_f")){
+        $(".f1").show();
         totalFeatures +=1;
         $("#snd_ft1").get(0).play();
     }
     setTimeout(function(){
         if(s2.includes("_f")){
+            $(".f2").show();
             totalFeatures +=1;
             $("#snd_ft2").get(0).play();
         }
     },300); 
     setTimeout(function(){
         if(s3.includes("_f")){
+            $(".f3").show();
             totalFeatures +=1;
             $("#snd_ft3").get(0).play();
         }
