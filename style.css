@@ -45,6 +45,31 @@ body{
     right: 410px;
 }
 
+.hold{
+    width: 70px;
+    height: 38px;
+    background-color: red;
+    position: absolute;
+    top: 756px;;
+    border-radius: 20%;
+    opacity: 0.3; 
+}
+
+.h1{
+    left: 490px;
+}
+
+.h2{
+    left: 595px;
+}
+
+.h3{
+    left: 700px;
+}
+
+
+
+
 
 .start-btn{
     width: 70px;
@@ -53,7 +78,7 @@ body{
     position: absolute;
     right: 380px;
     top: 756px;;
-    border-radius: 30%;
+    border-radius: 20%;
     opacity: 0.3;
 }
 

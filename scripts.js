@@ -87,10 +87,33 @@ nrOfSymbols = reel1.length;
 
 var canPlay = true;
 
+var holding = false;
+
+var hold_1 = false;
+var hold_2 = false;
+var hold_3 = false;
+
+$(".f1").hide();
+$(".f2").hide();
+$(".f3").hide();
+
+$(".h1").hide();
+$(".h2").hide();
+$(".h3").hide();
+
+$(".start-btn").hide();
+
 go();
 
 $(".start-btn").click(function(){
     if(canPlay){
+        $(".start-btn").hide();
+        $(".f1").hide();
+        $(".f2").hide();
+        $(".f3").hide();
+        $(".h1").hide();
+        $(".h2").hide();
+        $(".h3").hide();
         credits -= 1;
         credits_display.text(credits);
         go();
@@ -101,10 +124,6 @@ $(".start-btn").click(function(){
 
 function go(){
     canPlay = false;
-
-    $(".f1").hide();
-    $(".f2").hide();
-    $(".f3").hide();
     
     $("#snd_start").get(0).play();
     setTimeout(function(){showSpinning(reel_1)},10);
@@ -172,6 +191,12 @@ function showSymbols(r){
         checkWin(symb_1,symb_2,symb_3);
         checkFeature(symb1,symb2,symb3);
         canPlay = true;
+        $(".start-btn").show();
+        if(!holding){
+            $(".h1").show();
+            $(".h2").show();
+            $(".h3").show();
+        }
     }
 }
 
