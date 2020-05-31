@@ -88,10 +88,14 @@ nrOfSymbols = reel1.length;
 var canPlay = true;
 
 var holding = false;
+var canHold = true;
+var holdAll = false;
 
 var hold_1 = false;
 var hold_2 = false;
 var hold_3 = false;
+
+var prize = 0;
 
 $(".f1").hide();
 $(".f2").hide();
@@ -101,7 +105,49 @@ $(".h1").hide();
 $(".h2").hide();
 $(".h3").hide();
 
+$(".hh1").hide();
+$(".hh2").hide();
+$(".hh3").hide();
+
 $(".start-btn").hide();
+
+
+$(".h1").click(function(){hold1()});
+$(".h2").click(function(){hold2()});
+$(".h3").click(function(){hold3()});
+
+function hold1(){
+    if(canHold){
+        $("#snd_hold").get(0).play();
+        {$(".h1").hide();
+        $(".hh1").show();
+        hold_1 = true;
+        holding = true;
+        }
+    }
+}
+
+function hold2(){
+    if(canHold){
+        $("#snd_hold").get(0).play();
+        {$(".h2").hide();
+        $(".hh2").show();
+        hold_2 = true;
+        holding = true;
+        }
+    }
+}
+
+function hold3(){
+    if(canHold){
+        $("#snd_hold").get(0).play();
+        {$(".h3").hide();
+        $(".hh3").show();
+        hold_3 = true;
+        holding = true;
+        }
+    }
+}
 
 go();
 
@@ -123,18 +169,40 @@ $(".start-btn").click(function(){
 
 
 function go(){
+    canHold = false;
+    $('.info1').text("canHold: " + String(canHold));
+    $('.info2').text("holding: " + String(holding));
+    $('.info3').text("prize: " + String(prize));
+
     canPlay = false;
+    if (canHold && !holding){
+        resetHold();
+        canHold = false;
+    }
     
     $("#snd_start").get(0).play();
-    setTimeout(function(){showSpinning(reel_1)},10);
-    var wait = Math.floor(Math.random()*800) + 2000;
-    setTimeout(function(){showSymbols(1)}, wait);
-    showSpinning(reel_2);
-    var wait = Math.floor(Math.random()*1000) + 3000;
-    setTimeout(function(){showSymbols(2)}, wait);
-    showSpinning(reel_3);
-    var wait = Math.floor(Math.random()*1000) + 4200;
-    setTimeout(function(){showSymbols(3)}, wait);
+
+    if(!hold_1){
+        setTimeout(function(){showSpinning(reel_1)},10);
+        var wait = Math.floor(Math.random()*800) + 1000;
+        setTimeout(function(){showSymbols(1)}, wait);
+    } else {
+        hold_1 = false;
+    }
+    if(!hold_2){
+        showSpinning(reel_2);
+        var wait = Math.floor(Math.random()*1000) + 2000;
+        setTimeout(function(){showSymbols(2)}, wait);
+    } else {
+        hold_2 = false;
+    }
+    if(!hold_3){
+        showSpinning(reel_3);
+        var wait = Math.floor(Math.random()*1000) + 3200;
+        setTimeout(function(){showSymbols(3)}, wait);
+    } else {
+        hold_3 = false;
+    }
 }
 
 function showSpinning(reel){
@@ -190,20 +258,50 @@ function showSymbols(r){
         symb_3 = symb3.substring(4,9);
         checkWin(symb_1,symb_2,symb_3);
         checkFeature(symb1,symb2,symb3);
-        canPlay = true;
-        $(".start-btn").show();
-        if(!holding){
-            $(".h1").show();
-            $(".h2").show();
-            $(".h3").show();
+        checkWin(symb_1,symb_2,symb_3);
+        checkFeature(symb1,symb2,symb3);
+        if(prize == 0 && !holding){
+            canHold == true;
+            resetHold();
+        } else {
+            holding == false;
         }
     }
+    
+    canPlay = true;
+    $(".start-btn").show();
+    manageHold();
+}
+
+
+function manageHold(){
+    if(canHold){
+        $(".h1").show();
+        $(".h2").show();
+        $(".h3").show();
+    } 
+}
+
+function resetHold(){
+    canHold = true;
+    holding = false;
+    $(".h1").show();
+    $(".h2").show();
+    $(".h3").show();
+
+    $(".hh1").hide();
+    $(".hh2").hide();
+    $(".hh3").hide();
 }
 
 function checkWin(s1,s2,s3){
     if(s1 != s2){
+        prize = 0;
+        if(!holding){resetHold();}
         return;
     }
+
+    turnOffHold();
 
     $("#snd_prize").get(0).play();
     var same;
@@ -214,11 +312,22 @@ function checkWin(s1,s2,s3){
         same = 2;
     }
 
-    var prize = determineValue(s1,same);
+    prize = determineValue(s1,same);
 
     credits += prize;
     credits_display.text(credits);
 
+}
+
+function turnOffHold(){
+    $(".h1").hide();
+    $(".h2").hide();
+    $(".h3").hide();
+
+    $(".hh1").hide();
+    $(".hh2").hide();
+    $(".hh3").hide();
+    canHold = false;
 }
 
 function determineValue(symbol, same){
