@@ -86,10 +86,7 @@ credits_display.text(credits);
 nrOfSymbols = reel1.length;
 
 var canPlay = true;
-
-var holding = false;
-var canHold = true;
-var holdAll = false;
+var state = 0;
 
 var hold_1 = false;
 var hold_2 = false;
@@ -117,36 +114,27 @@ $(".h2").click(function(){hold2()});
 $(".h3").click(function(){hold3()});
 
 function hold1(){
-    if(canHold){
-        $("#snd_hold").get(0).play();
-        {$(".h1").hide();
-        $(".hh1").show();
-        hold_1 = true;
-        holding = true;
-        }
-    }
+    $("#snd_hold").get(0).play();
+    $(".h1").hide();
+    $(".hh1").show();
+    hold_1 = true;
+    state = 1;
 }
 
 function hold2(){
-    if(canHold){
-        $("#snd_hold").get(0).play();
-        {$(".h2").hide();
-        $(".hh2").show();
-        hold_2 = true;
-        holding = true;
-        }
-    }
+    $("#snd_hold").get(0).play();
+    $(".h2").hide();
+    $(".hh2").show();
+    hold_2 = true;
+    state = 1;
 }
 
 function hold3(){
-    if(canHold){
-        $("#snd_hold").get(0).play();
-        {$(".h3").hide();
-        $(".hh3").show();
-        hold_3 = true;
-        holding = true;
-        }
-    }
+    $("#snd_hold").get(0).play();
+    $(".h3").hide();
+    $(".hh3").show();
+    hold_3 = true;
+    state = 1;
 }
 
 go();
@@ -164,21 +152,11 @@ $(".start-btn").click(function(){
         credits_display.text(credits);
         go();
     }
-    
 });
 
 
 function go(){
-    canHold = false;
-    $('.info1').text("canHold: " + String(canHold));
-    $('.info2').text("holding: " + String(holding));
-    $('.info3').text("prize: " + String(prize));
-
     canPlay = false;
-    if (canHold && !holding){
-        resetHold();
-        canHold = false;
-    }
     
     $("#snd_start").get(0).play();
 
@@ -203,6 +181,34 @@ function go(){
     } else {
         hold_3 = false;
     }
+
+    if(state == 0){
+        resetHold();
+    } else if (state == 1){
+        state = 0;
+    } else {
+        console.log(state);
+    }
+}
+
+function resetHold(){
+    $(".h1").show();
+    $(".h2").show();
+    $(".h3").show();
+
+    $(".hh1").hide();
+    $(".hh2").hide();
+    $(".hh3").hide();
+}
+
+function darkenHold(){
+    $(".h1").hide();
+    $(".h2").hide();
+    $(".h3").hide();
+
+    $(".hh1").hide();
+    $(".hh2").hide();
+    $(".hh3").hide();
 }
 
 function showSpinning(reel){
@@ -249,7 +255,7 @@ function showSymbols(r){
     reel.append(symbol_mid);
     reel.append(symbol_low);
 
-    if(r == 3){
+    if(r == 3 || hold_3){
         symb1 = $('#symb_1').attr('src');
         symb_1 = symb1.substring(4,9);
         symb2 = $('#symb_2').attr('src');
@@ -258,51 +264,27 @@ function showSymbols(r){
         symb_3 = symb3.substring(4,9);
         checkWin(symb_1,symb_2,symb_3);
         checkFeature(symb1,symb2,symb3);
-        checkWin(symb_1,symb_2,symb_3);
-        checkFeature(symb1,symb2,symb3);
-        if(prize == 0 && !holding){
-            canHold == true;
-            resetHold();
-        } else {
-            holding == false;
-        }
     }
     
     canPlay = true;
     $(".start-btn").show();
-    manageHold();
-}
-
-
-function manageHold(){
-    if(canHold){
-        $(".h1").show();
-        $(".h2").show();
-        $(".h3").show();
-    } 
-}
-
-function resetHold(){
-    canHold = true;
-    holding = false;
-    $(".h1").show();
-    $(".h2").show();
-    $(".h3").show();
-
-    $(".hh1").hide();
-    $(".hh2").hide();
-    $(".hh3").hide();
 }
 
 function checkWin(s1,s2,s3){
+
+    $('.info1').text("slot1: " + String(s1));
+    $('.info2').text("slot2: " + String(s2));
+    $('.info3').text("state: " + String(state));
+
     if(s1 != s2){
         prize = 0;
-        if(!holding){resetHold();}
         return;
     }
 
-    turnOffHold();
-
+    /* state = 1; */
+    darkenHold();
+    $('.info3').text("state: " + String(state));
+   
     $("#snd_prize").get(0).play();
     var same;
 
@@ -317,17 +299,6 @@ function checkWin(s1,s2,s3){
     credits += prize;
     credits_display.text(credits);
 
-}
-
-function turnOffHold(){
-    $(".h1").hide();
-    $(".h2").hide();
-    $(".h3").hide();
-
-    $(".hh1").hide();
-    $(".hh2").hide();
-    $(".hh3").hide();
-    canHold = false;
 }
 
 function determineValue(symbol, same){
