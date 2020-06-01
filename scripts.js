@@ -108,10 +108,24 @@ $(".hh3").hide();
 
 $(".start-btn").hide();
 
+$(".reset").click(function(){reset()});
 
 $(".h1").click(function(){hold1()});
 $(".h2").click(function(){hold2()});
 $(".h3").click(function(){hold3()});
+
+function reset(){
+    hold_1 = false;
+    hold_2 = false;
+    hold_3 = false;
+    state = 0;
+    $(".h1").show();
+    $(".h2").show();
+    $(".h3").show();
+    $(".hh1").hide();
+    $(".hh2").hide();
+    $(".hh3").hide();
+}
 
 function hold1(){
     $("#snd_hold").get(0).play();
