@@ -164,23 +164,19 @@ function go(){
         setTimeout(function(){showSpinning(reel_1)},10);
         var wait = Math.floor(Math.random()*800) + 1000;
         setTimeout(function(){showSymbols(1)}, wait);
-    } else {
-        hold_1 = false;
-    }
+    } 
+
     if(!hold_2){
         showSpinning(reel_2);
         var wait = Math.floor(Math.random()*1000) + 2000;
         setTimeout(function(){showSymbols(2)}, wait);
-    } else {
-        hold_2 = false;
-    }
+    } 
+
     if(!hold_3){
         showSpinning(reel_3);
         var wait = Math.floor(Math.random()*1000) + 3200;
         setTimeout(function(){showSymbols(3)}, wait);
-    } else {
-        hold_3 = false;
-    }
+    } 
 
     if(state == 0){
         resetHold();
@@ -255,7 +251,20 @@ function showSymbols(r){
     reel.append(symbol_mid);
     reel.append(symbol_low);
 
-    if(r == 3 || hold_3){
+    var shouldCheck = false;
+
+    if (r == 3){shouldCheck = true;}
+
+    if (r == 2 && hold_3){shouldCheck = true;}
+
+    if (r == 1 && hold_2 && hold_3){shouldCheck = true;}
+
+    if (hold_1 && hold_2 && hold_3){shouldCheck = true;}
+
+    if(shouldCheck){
+        $('.info1').text("*** Checking ***");
+        $('.info2').text("");
+        $('.info3').text("");
         symb1 = $('#symb_1').attr('src');
         symb_1 = symb1.substring(4,9);
         symb2 = $('#symb_2').attr('src');
@@ -264,6 +273,19 @@ function showSymbols(r){
         symb_3 = symb3.substring(4,9);
         checkWin(symb_1,symb_2,symb_3);
         checkFeature(symb1,symb2,symb3);
+        if (prize > 0) {
+            state = 0;
+        }
+        
+        hold_1 = false;
+        hold_2 = false;
+        hold_3 = false;
+        
+    }   else {
+        $('.info1').text("*** NOT checking ***");
+        condition_1 = r == 1 && hold_2 && hold_3;
+        $('.info2').text("r == 1 && hold_2 && hold_3 = " + String(condition_1));
+        $('.info3').text("r: " + String(r) + "  hold_2 = " + String(hold_2) + "  hold_3 = " + String(hold_3) );
     }
     
     canPlay = true;
@@ -272,9 +294,8 @@ function showSymbols(r){
 
 function checkWin(s1,s2,s3){
 
-    $('.info1').text("slot1: " + String(s1));
-    $('.info2').text("slot2: " + String(s2));
-    $('.info3').text("state: " + String(state));
+
+    /*$('.info3').text("state: " + String(state));*/
 
     if(s1 != s2){
         prize = 0;
