@@ -1,3 +1,11 @@
+/* For debugging purposes :
+
+$('.info1').text("*** Checking ***");
+$('.info2').text("");
+$('.info3').text(""); 
+
+*/
+
 var imgDir = "img/";
 var reel1 = [ "s_apple.png",
             "s_druif.png",
@@ -276,9 +284,6 @@ function showSymbols(r){
     if (hold_1 && hold_2 && hold_3){shouldCheck = true;}
 
     if(shouldCheck){
-        $('.info1').text("*** Checking ***");
-        $('.info2').text("");
-        $('.info3').text("");
         symb1 = $('#symb_1').attr('src');
         symb_1 = symb1.substring(4,9);
         symb2 = $('#symb_2').attr('src');
@@ -295,11 +300,6 @@ function showSymbols(r){
         hold_2 = false;
         hold_3 = false;
         
-    }   else {
-        $('.info1').text("*** NOT checking ***");
-        condition_1 = r == 1 && hold_2 && hold_3;
-        $('.info2').text("r == 1 && hold_2 && hold_3 = " + String(condition_1));
-        $('.info3').text("r: " + String(r) + "  hold_2 = " + String(hold_2) + "  hold_3 = " + String(hold_3) );
     }
     
     canPlay = true;
@@ -318,7 +318,6 @@ function checkWin(s1,s2,s3){
 
     /* state = 1; */
     darkenHold();
-    $('.info3').text("state: " + String(state));
    
     $("#snd_prize").get(0).play();
     var same;
