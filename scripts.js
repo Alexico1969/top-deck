@@ -116,7 +116,9 @@ $(".hh3").hide();
 
 $(".start-btn").hide();
 
-$(".reset").click(function(){reset()});
+$(".reset-btn").click(function(){reset()});
+$(".reset-btn").hide();
+
 
 $(".h1").click(function(){hold1()});
 $(".h2").click(function(){hold2()});
@@ -133,6 +135,10 @@ function reset(){
     $(".hh1").hide();
     $(".hh2").hide();
     $(".hh3").hide();
+
+    $(".reset-btn").hide();
+
+    $("#snd_reset").get(0).play();
 }
 
 function hold1(){
@@ -141,6 +147,7 @@ function hold1(){
     $(".hh1").show();
     hold_1 = true;
     state = 1;
+    $(".reset-btn").show();
 }
 
 function hold2(){
@@ -149,6 +156,7 @@ function hold2(){
     $(".hh2").show();
     hold_2 = true;
     state = 1;
+    $(".reset-btn").show();
 }
 
 function hold3(){
@@ -157,6 +165,7 @@ function hold3(){
     $(".hh3").show();
     hold_3 = true;
     state = 1;
+    $(".reset-btn").show();
 }
 
 go();
@@ -179,6 +188,12 @@ $(".start-btn").click(function(){
 
 function go(){
     canPlay = false;
+    if(state == 1){
+        $(".reset-btn").show();
+    } else {
+        $(".reset-btn").hide();
+    }
+    
     
     $("#snd_start").get(0).play();
 
@@ -217,6 +232,10 @@ function resetHold(){
     $(".hh1").hide();
     $(".hh2").hide();
     $(".hh3").hide();
+
+    $(".reset-btn").hide();
+
+    state = 0;
 }
 
 function darkenHold(){
