@@ -1,3 +1,7 @@
+
+/* setInterval(function(){$('.info1').text("State :" + state);},200); */
+
+
 /* For debugging purposes :
 
 $('.info1').text("*** Checking ***");
@@ -124,11 +128,13 @@ $(".h1").click(function(){hold1()});
 $(".h2").click(function(){hold2()});
 $(".h3").click(function(){hold3()});
 
+/* setInterval(function(){$('.info1').text("State :" + state);},200); */
+
 function reset(){
     hold_1 = false;
     hold_2 = false;
     hold_3 = false;
-    state = 0;
+    /* state = 0; */
     $(".h1").show();
     $(".h2").show();
     $(".h3").show();
@@ -171,6 +177,7 @@ function hold3(){
 go();
 
 $(".start-btn").click(function(){
+    $(".reset-btn").hide();
     if(canPlay){
         $(".start-btn").hide();
         $(".f1").hide();
@@ -188,12 +195,7 @@ $(".start-btn").click(function(){
 
 function go(){
     canPlay = false;
-    if(state == 1){
-        $(".reset-btn").show();
-    } else {
-        $(".reset-btn").hide();
-    }
-    
+    $(".reset-btn").hide();    
     
     $("#snd_start").get(0).play();
 
@@ -235,7 +237,7 @@ function resetHold(){
 
     $(".reset-btn").hide();
 
-    state = 0;
+    /* state = 0; */
 }
 
 function darkenHold(){
