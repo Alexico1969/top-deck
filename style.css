@@ -16,6 +16,27 @@ body{
 /* classes */
 
 
+
+.win_amount{
+    font-family: Digital;
+    font-size: 36px;
+    color: lightgreen;
+    position: absolute;
+    right: 1218px;
+    top: 492px;
+    opacity: 1;
+}
+
+.win_bank{
+    font-family: Digital;
+    font-size: 36px;
+    color: lightgreen;
+    position: absolute;
+    right: 1128px;
+    top: 492px;
+    opacity: 1;
+}
+
 .credits{
     font-family: Digital;
     font-size: 36px;
@@ -45,7 +66,7 @@ body{
     right: 410px;
 }
 
-.reset-btn{
+.reset-btn, .take_win-btn{
     width: 70px;
     height: 38px;
     background-color: yellow;
@@ -55,6 +76,8 @@ body{
     border-radius: 20%;
     opacity: 0.3;
 }
+
+
 
 .hold{
     width: 70px;
@@ -188,5 +211,25 @@ body{
     75% { opacity: 0.1;}
     100% { opacity: 0.0;}
 
+}
+
+.flash_win{
+    animation-name: pulse;
+    animation-duration: 0.2s;
+    animation-iteration-count: infinite;
+}
+
+.flash_win{
+    animation-name: flash_loose;
+    animation-duration: 0.2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes flash_loose{
+    0% { opacity: 0.2;}
+    25% { opacity: 0.1;}
+    50% { opacity: 0.0;}
+    75% { opacity: 0.1;}
+    100% { opacity: 0.2;}
 }
 

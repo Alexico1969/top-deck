@@ -1,9 +1,6 @@
-
-/* setInterval(function(){$('.info1').text("State :" + state);},200); */
-
-
 /* For debugging purposes :
 
+/* setInterval(function(){$('.info1').text("State :" + state);},200); 
 $('.info1').text("*** Checking ***");
 $('.info2').text("");
 $('.info3').text(""); 
@@ -92,8 +89,15 @@ var reel_3 = $('.reel3');
 
 
 var credits = 100;
+var win = 0;
+var win_bank = 0;
 var credits_display = $('.credits');
-credits_display.text(credits);
+var win_display = $('.win_amount');
+var win_bank_display = $('.win_bank');
+
+setInterval(function(){credits_display.text(credits)},200);
+setInterval(function(){win_display.text(win)},200);
+setInterval(function(){win_bank_display.text(win_bank)},200);
 
 nrOfSymbols = reel1.length;
 
@@ -123,6 +127,8 @@ $(".start-btn").hide();
 $(".reset-btn").click(function(){reset()});
 $(".reset-btn").hide();
 
+$(".take_win-btn").click(function(){takeWin()});
+$(".take_win-btn").hide();
 
 $(".h1").click(function(){hold1()});
 $(".h2").click(function(){hold2()});
@@ -145,6 +151,12 @@ function reset(){
     $(".reset-btn").hide();
 
     $("#snd_reset").get(0).play();
+}
+
+function takeWin(){
+    win_bank += win;
+    win = 0;
+    $(".take_win-btn").hide();
 }
 
 function hold1(){
@@ -187,7 +199,6 @@ $(".start-btn").click(function(){
         $(".h2").hide();
         $(".h3").hide();
         credits -= 1;
-        credits_display.text(credits);
         go();
     }
 });
@@ -351,8 +362,9 @@ function checkWin(s1,s2,s3){
 
     prize = determineValue(s1,same);
 
-    credits += prize;
-    credits_display.text(credits);
+    win += prize;
+    $(".take_win-btn").show();
+    
 
 }
 
